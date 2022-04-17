@@ -1,0 +1,17 @@
+node_modules
+
+/.cache
+/build
+/functions
+/public/build
+.env
+.nvmrc
+.npmrc
+.output
+yarn-error.log
+
+# Workspace
+.idea
+
+# Derrived
+/app/styles/app.css

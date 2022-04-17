@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** Base styling for elements. */
+@layer base {
+	:root {
+		--app-height: 100vh;
+	}
+	html, body, #app {
+		@apply overscroll-none
+	}
+	body {
+		@apply text-gray-800 bg-primary-extra-opaque;
+		overflow: scroll;
+		overflow-x: hidden;
+		/*noinspection CssInvalidPropertyValue*/
+		overflow-y: overlay;
+	}
+	p + p {
+		@apply mt-4
+	}
+	p + h4 {
+		@apply mt-4
+	}
+	h1 {
+		@apply text-7xl sm:text-9xl;
+	}
+	h2 {
+		@apply text-5xl sm:text-7xl;
+	}
+	h3 {
+		@apply text-3xl sm:text-5xl tracking-[0.1em];
+	}
+	h4 {
+		@apply font-black text-lg sm:text-xl uppercase tracking-[0.1em];
+	}
+	h5 {
+		@apply font-semibold text-lg sm:text-lg uppercase tracking-[0.1em];
+	}
+	img {
+		@apply w-full
+	}
+
+	::-webkit-scrollbar {
+		background: rgb(249, 250, 251);
+		width: 6px;
+		height: 6px;
+	}
+	::-webkit-scrollbar-button {
+		display: none;
+	}
+	::-webkit-scrollbar-track {
+		opacity: 0;
+	}
+	::-webkit-scrollbar-track-piece {
+		opacity: 0;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: rgb(197 157 95);
+		/*border-radius: 3px;*/
+	}
+	::-webkit-resizer, html::-webkit-scrollbar-button, html::-webkit-scrollbar-corner {
+		display: none;
+	}
+}
+
+/** When building components */
+/*@layer components {
+
+}*/
+
+/** Overrides components */
+@layer utilities {
+	.cursive {
+		font-family: 'Playball', cursive;
+	}
+	.h-viewport {
+		height: var(--app-height);
+	}
+}
