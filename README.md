@@ -10,8 +10,6 @@ This is a boilerplate setup including:
 - Prepared for an easy deploy with Cloudflare Pages
 - ... and some other minor tweaks
 
-Contains a very basic blog structure, reading and parsing content from md files using MDX.
-
 Feel free to fork.
 
 
