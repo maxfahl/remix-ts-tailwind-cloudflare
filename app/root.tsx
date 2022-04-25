@@ -37,7 +37,7 @@ export const loader: LoaderFunction = async ({
   }
 }
 
-const metaTitle = 'Remix Builerplate'
+const metaTitle = 'Remix Boilerplate'
 const metaDescription = '...'
 
 export const meta: MetaFunction = ({ data }) => ({
