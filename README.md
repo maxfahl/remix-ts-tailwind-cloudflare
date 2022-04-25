@@ -4,9 +4,8 @@ This is a boilerplate setup including:
 - TailwindCSS 3.0.23
 - Typescript 4.6.3
 - Prettier 2.6.2 (with prettier-plugin-tailwindcss)
-- Framer Motion 6.2.9
 - React Use 17.3.2
-- Remix Utils 1.3.5
+- Remix Utils 3.0.0
 - Prepared for an easy deploy with Cloudflare Pages
 - ... and some other minor tweaks
 
