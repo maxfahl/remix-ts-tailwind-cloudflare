@@ -1,12 +1,14 @@
 node_modules
 
 /.cache
+/api
 /build
 /functions
 /public/build
 .env
 .nvmrc
 .npmrc
+.vercel
 .output
 yarn-error.log
 

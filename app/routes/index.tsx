@@ -1,7 +1,32 @@
+import { LoaderFunction } from '@remix-run/server-runtime'
+import { LoaderData } from '../../custom'
+import { useLoaderData } from '@remix-run/react'
+
+export type IndexLoadeData = {
+  welcome: string
+}
+
+/**
+ * Optionally expose cloudflare environtment variables from the loader
+ * to be accessed in the components.
+ */
+export const loader: LoaderFunction = async ({ context }): Promise<LoaderData<IndexLoadeData>> => {
+  const env = context?.env
+  return {
+    env,
+    data: { welcome: 'Remix Boilerplate' },
+  }
+}
+
 export default function Index() {
+  const {
+    data: { welcome },
+    env,
+  } = useLoaderData<LoaderData<IndexLoadeData>>()
+
   return (
     <main className="lg:prose-md prose p-8">
-      <h1>Ut facere consectetur</h1>
+      <h1>{welcome}</h1>
       <p>
         Aliquid quae est aut. Omnis dicta totam sunt alias illum omnis officiis qui iusto. Sit dolor
         dolorum delectus ut eligendi reiciendis quis dicta. Impedit et rerum ut est culpa voluptatem

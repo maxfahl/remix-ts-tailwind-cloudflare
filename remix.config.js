@@ -6,5 +6,5 @@ module.exports = {
   server: process.env.NODE_ENV === 'development' ? undefined : './server.js',
   devServerBroadcastDelay: 1000,
   ignoredRouteFiles: ['.*'],
-  serverDependenciesToBundle: [/^marked.*/],
+  // serverDependenciesToBundle: [/^marked.*/, /^mapbox-gl.*/],
 }

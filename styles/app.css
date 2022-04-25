@@ -11,7 +11,7 @@
 		@apply overscroll-none
 	}
 	body {
-		@apply text-gray-800 bg-primary-extra-opaque;
+		@apply text-gray-800;
 		overflow: scroll;
 		overflow-x: hidden;
 		/*noinspection CssInvalidPropertyValue*/

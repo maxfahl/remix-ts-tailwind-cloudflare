@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     fontFamily: {
       // sans: ['Source Sans Pro', 'sans-serif'],
-      // serif: ['Source Sans Pro', 'sans-serif'],
-      // mono: ['Source Sans Pro', 'sans-serif'],
+      // serif: ['Source Sans Pro', 'serif'],
+      // mono: ['Courier', 'monospace'],
       // cursive: "'Playball', cursive",
     },
     extend: {
