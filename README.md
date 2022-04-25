@@ -9,6 +9,8 @@ This is a boilerplate setup including:
 - Prepared for an easy deploy with Cloudflare Pages (Select Remix as "Framework Preset")
 - ... and some other minor tweaks
 
+A deployed version can be found [here](https://remix-ts-tailwind-cloudflare.pages.dev/).
+
 Feel free to fork.
 
 

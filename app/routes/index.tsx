@@ -21,11 +21,10 @@ export const loader: LoaderFunction = async ({ context }): Promise<LoaderData<In
 export default function Index() {
   const {
     data: { welcome },
-    env,
   } = useLoaderData<LoaderData<IndexLoadeData>>()
 
   return (
-    <main className="lg:prose-md prose p-8">
+    <main className="lg:prose-md prose p-4 md:p-8">
       <h1>{welcome}</h1>
       <p>
         Aliquid quae est aut. Omnis dicta totam sunt alias illum omnis officiis qui iusto. Sit dolor

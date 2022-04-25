@@ -13,11 +13,32 @@ import { useIsomorphicLayoutEffect } from 'react-use'
 import { getEnvVariable } from '~/utils/env'
 import { CatchBoundaryComponent } from '@remix-run/server-runtime/routeModules'
 import { ErrorBoundaryComponent } from '@remix-run/react/routeModules'
+import { LoaderData } from '../custom'
 
 import appStyles from './styles/app.css'
 
-const metaDescription = '...'
+export type RootLoaderData = {
+  url: string
+}
+
+export const loader: LoaderFunction = async ({
+  request,
+  context,
+}: any): Promise<LoaderData<RootLoaderData>> => {
+  return {
+    data: {
+      url: request.url,
+    },
+    // Pass environment variables you need to access in front-end code here.
+    env: {
+      ENV_VAR_1: getEnvVariable('ENV_VAR_1', context),
+      ENV_VAR_2: getEnvVariable('ENV_VAR_2', context),
+    },
+  }
+}
+
 const metaTitle = 'Remix Builerplate'
+const metaDescription = '...'
 
 export const meta: MetaFunction = ({ data }) => ({
   charset: 'utf-8',
@@ -25,10 +46,10 @@ export const meta: MetaFunction = ({ data }) => ({
   title: metaTitle,
   description: metaDescription,
   'og:type': 'website',
-  'og:url': data.url,
+  'og:url': data.data.url,
   'og:title': metaTitle,
   'og:description': metaDescription,
-  'og:image': `${data.url}images/ogimage.jpg`,
+  'og:image': `${data.data.url}images/ogimage.jpg`,
   'fb:app_id': '1200894900738721',
 })
 
@@ -39,31 +60,20 @@ export const links: LinksFunction = () => {
   ]
 }
 
-export const loader: LoaderFunction = async ({ request, context }: any) => {
-  return {
-    url: request.url,
-    ENV: {
-      ENV_VAR_1: getEnvVariable('ENV_VAR_1', context),
-      ENV_VAR_2: getEnvVariable('ENV_VAR_2', context),
-    },
-  }
-}
-
 export default function App() {
-  const { ENV } = useLoaderData()
+  const { env } = useLoaderData<LoaderData<RootLoaderData>>()
 
   /**
    * Set --app-height to window.innerHeight.
-   * Useful for a lot of apps that wants to display content
-   * on the entire screen since 100vh does not calculate for
+   * Useful for websites that wants to display content
+   * on the entire screen, since 100vh does not calculate for
    * additional toolbars in mobile safari/chrome etc.
    *
    * Use in css with `height: var(--app-height)`
    */
   useIsomorphicLayoutEffect(function () {
     const setViewportHeight = () => {
-      const doc = document.documentElement
-      doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
     }
     window.addEventListener('resize', setViewportHeight)
     setViewportHeight()
@@ -75,14 +85,19 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-full">
+      <body>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        {/**
+         * Expose environment variables on window, get them by
+         * calling getEnvVariable(VARIABLE_NAME) defined in
+         * app/utils/env.ts
+         */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.env = ${JSON.stringify(ENV)}`,
+            __html: `window.env = ${JSON.stringify(env)}`,
           }}
         />
       </body>
@@ -100,7 +115,7 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
         <Meta />
         <Links />
       </head>
-      <body className="p-8">
+      <body>
         <h2>Oh no!</h2>
         <h4 className="mt-8">Error: {error.message}</h4>
         <pre className="font-mono mt-8 text-xs">{error.stack}</pre>
@@ -119,11 +134,9 @@ export const CatchBoundary: CatchBoundaryComponent = () => {
         <title>Oops!</title>
         <Meta />
         <Links />
-        st
       </head>
       <body className="p-8">
         <h2>Oops!</h2>
-
         <h4 className="mt-8">
           Error: {caught.status}: {caught.statusText}
         </h4>

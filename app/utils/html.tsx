@@ -1,11 +1,15 @@
 /**
+ *
  * Utility function to generate class names for components.
+ *
+ * Usage example:
  *
  * classNames(
  * 	'standard always there classes'
  * 	classNames // Possibly passed via props.
  * 	{'conditional': condition},
  * )
+ *
  */
 const classNames = (...definitions: any[]) => {
   const classes: string[] = []
