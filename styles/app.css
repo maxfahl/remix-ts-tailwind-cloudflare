@@ -36,13 +36,13 @@
 		@apply text-5xl sm:text-7xl;
 	}
 	h3 {
-		@apply text-3xl sm:text-5xl tracking-[0.1em];
+		@apply text-3xl sm:text-5xl;
 	}
 	h4 {
-		@apply font-black text-lg sm:text-xl uppercase tracking-[0.1em];
+		@apply text-lg sm:text-xl;
 	}
 	h5 {
-		@apply font-semibold text-lg sm:text-lg uppercase tracking-[0.1em];
+		@apply font-semibold text-lg sm:text-lg;
 	}
 
 	/**

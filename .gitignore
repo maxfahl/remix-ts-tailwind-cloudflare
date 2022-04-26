@@ -17,3 +17,6 @@ yarn-error.log
 
 # Derrived
 /app/styles/app.css
+
+# Mac related files
+.DS_Store
